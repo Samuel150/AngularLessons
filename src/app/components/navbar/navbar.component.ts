@@ -12,23 +12,23 @@ export class NavbarComponent implements OnInit {
   navbarOptions:INavbarOption[]=[
     {
       text:'POS',
-      icon:'svg-test0'
+      icon:'svg-list'
     },
     {
       text:'Transaction',
-      icon:'svg-test2'
+      icon:'svg-transaction'
     },
     {
       text:'Booking',
-      icon:'svg-test2'
+      icon:'svg-clock'
     },
     {
       text:'Orders Status',
-      icon:'svg-test2'
+      icon:'svg-box'
     },
     {
       text:'Check Dashboard',
-      icon:'svg-test2'
+      icon:'svg-dashboard'
     }
   ]
 

@@ -1,8 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-//base
-@import "./assets/base/reset";
+body{
+    font-family: 'poppins', sans-serif
+}
 
-//components
-@import "./assets/components/navbar";
-@import "./assets/components/button";
+@import "./assets/styles/styles";

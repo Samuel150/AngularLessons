@@ -3,12 +3,16 @@
         Davur
     </h2>
     <div class="navbar-options">
-        <span *ngFor="let option of navbarOptions">
+        <div *ngFor="let option of navbarOptions">
+            <svg >
+                <use [attr.xlink:href]="'assets/svg/icons-app.svg#' + option.icon" />
+            </svg>
             {{option.text}}
-        </span>
+        </div>
     </div>
     <div class="profile">
         Perfil
     </div>
 </div>
+
 
