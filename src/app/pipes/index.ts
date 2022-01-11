@@ -1,0 +1,1 @@
+export {NumberFormatModule} from './number-format/number-format.module'

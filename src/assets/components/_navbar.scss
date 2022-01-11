@@ -1,0 +1,29 @@
+.navbar-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.navbar-options{
+    margin-right: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:40px;
+    span{
+        color: gray;
+        &:hover{
+            color: blue;
+            cursor: pointer;
+        }
+    }
+}
+
+svg{
+    width: 20px;
+    height: 20px;
+    fill: black;
+}
