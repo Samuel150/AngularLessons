@@ -11,7 +11,7 @@ const routes:Routes=[
     children:[
       {
         path:'menus',
-        loadChildren:()=>import('../menus/menu.module').then(m=>m.MenuModule)
+        loadChildren:()=>import('../menus/menus.module').then(m=>m.MenusModule)
       }
     ]
   },

@@ -1,6 +1,18 @@
+
+//abstracts
+@import "./abstracts/colors";
+@import "./abstracts/utilities";
 //base
 @import "./base/reset";
 
 //components
 @import "./components/navbar";
 @import "./components/button";
+@import "./components/card";
+
+//bootstrap grid
+@import 'bootstrap/dist/css/bootstrap-grid.min.css';
+
+body{
+    background-color: var(--bg-color);
+}

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MenusComponent } from './menus.component';
 import { ButtonModule } from 'src/app/components';
+import { CardModule } from 'src/app/components/card/card.module';
+import { TestService } from 'src/app/services';
 
 const routes:Routes=[
   {
@@ -17,6 +19,8 @@ const routes:Routes=[
     CommonModule,
     RouterModule.forChild(routes),
     ButtonModule,
-  ]
+    CardModule,
+  ],
+  providers:[]
 })
-export class MenuModule { }
+export class MenusModule { }

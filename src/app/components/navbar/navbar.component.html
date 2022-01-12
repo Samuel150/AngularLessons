@@ -1,5 +1,5 @@
 <div class="navbar-container">
-    <h2>
+    <h2 class="page-title">
         Davur
     </h2>
     <div class="navbar-options">
@@ -7,11 +7,14 @@
             <svg >
                 <use [attr.xlink:href]="'assets/svg/icons-app.svg#' + option.icon" />
             </svg>
-            {{option.text}}
+            <span>
+                {{option.text}}
+            </span>
         </div>
     </div>
     <div class="profile">
         Perfil
+        <app-button (btnClick)="sendEventToMenuPage()" [buttonCnf]="navButton"></app-button>
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { IButton } from 'src/app/interfaces';
 
 @Component({
@@ -6,7 +6,7 @@ import { IButton } from 'src/app/interfaces';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent implements OnInit,OnChanges {
+export class ButtonComponent implements OnInit,OnChanges,OnDestroy,DoCheck {
 
   @Input() buttonCnf:IButton
   @Output() btnClick = new EventEmitter<string>()
@@ -14,22 +14,33 @@ export class ButtonComponent implements OnInit,OnChanges {
 
 
   constructor() { 
-    console.log('constructor')
+    // console.log('constructor')
     this.buttonCnf={
       color:'blue',
       text:'Buscar'
     }
   }
+
+  ngOnDestroy(): void {
+    // console.log('ondestroy')
+  }
+
+  ngOnInit(): void {
+    // console.log('init')
+    
+  }
+  ngDoCheck(): void {
+    // console.log('Do check')
+  }
+  
   ngOnChanges(changes: SimpleChanges): void {
+    // console.log('changes',changes)
     if(changes.buttonCnf && !changes.buttonCnf.firstChange){
       //solo cuando ocurra un cambio despues del inicial
     }
   }
 
-  ngOnInit(): void {
-    console.log('init')
-    
-  }
+  
 
   sendOutput(){
     this.btnClick.emit(this.buttonCnf.text)

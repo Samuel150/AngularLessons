@@ -3,7 +3,13 @@
     justify-content: space-around;
     align-items: center;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: var(--white);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.page-title{
+    font-size: 50px;
+    color: var(--secondary)
 }
 
 .navbar-options{
@@ -13,10 +19,11 @@
     justify-content: center;
     align-items: center;
     gap:40px;
-    span{
-        color: gray;
+    div{
+        color: var(--gray);
+        font-weight: 500px;
         &:hover{
-            color: blue;
+            color: var(--primary);
             cursor: pointer;
         }
     }

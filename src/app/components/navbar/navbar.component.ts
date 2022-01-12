@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { INavbarOption } from 'src/app/interfaces';
+import { IButton, INavbarOption } from 'src/app/interfaces';
+import { TestService } from 'src/app/services';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { INavbarOption } from 'src/app/interfaces';
 })
 export class NavbarComponent implements OnInit {
 
-
+  navButton:IButton={text:'Navbar',color:'orange'}
   navbarOptions:INavbarOption[]=[
     {
       text:'POS',
@@ -32,9 +33,15 @@ export class NavbarComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(
+    private _testService:TestService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  sendEventToMenuPage(){
+    this._testService.sendChange(this.navButton)
   }
 
 }

@@ -1,6 +1,24 @@
 .button-restaurant{
-    border-radius: 25px;
-    background-color: #2841bc;
-    color: white;
+    border-radius: var(--rad-medium);
     padding: 10px 15px;
+    &--blue{
+        background-color: var(--primary);
+        border: 2px solid var(--primary);
+        color: var(--white);
+        &:hover{
+            background-color: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+    }
+    &--orange{
+        background-color: var(--accent);
+        border: 2px solid var(--accent);
+        color: var(--white);
+        &:hover{
+            background-color: var(--white);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+    }
 }
