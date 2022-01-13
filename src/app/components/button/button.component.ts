@@ -8,7 +8,7 @@ import { IButton } from 'src/app/interfaces';
 })
 export class ButtonComponent implements OnInit,OnChanges,OnDestroy,DoCheck {
 
-  @Input() buttonCnf:IButton
+  @Input()  buttonCnf:IButton
   @Output() btnClick = new EventEmitter<string>()
   title:string='Titulo'
 
