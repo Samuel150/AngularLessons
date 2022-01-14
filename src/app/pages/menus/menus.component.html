@@ -1,4 +1,4 @@
-<app-button
+<!-- <app-button
     [buttonCnf]="btnCnf"
     (btnClick)="changeAttributes()"
 ></app-button>
@@ -9,10 +9,10 @@
 <app-button
     *ngIf="showButon2"
     [buttonCnf]="btnCnf2"
-></app-button>
+></app-button> -->
 <div class="food-list row">
     <app-card class="food-list-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let item of [].constructor(12)" >
-        <img src="https://davur.dexignzone.com/frontend/images/dish/1.jpg"/>
+        <img [src]="page%2==0?'https://davur.dexignzone.com/frontend/images/dish/1.jpg':'https://davur.dexignzone.com/frontend/images/dish/4.jpg'"/>
         <div class="food-info">
             <h5>Cheese Burger</h5>
             <span>
@@ -23,4 +23,7 @@
             </span>
         </div>
     </app-card>
+</div>
+<div class="u-flex u-flex-jus-center">
+    <span>{{page}}</span>
 </div>

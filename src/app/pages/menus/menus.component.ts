@@ -10,7 +10,10 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class MenusComponent implements OnInit,OnDestroy {
 
+  imgSrc1:string='https://davur.dexignzone.com/frontend/images/dish/4.jpg'
+  imgSrc2:string='https://davur.dexignzone.com/frontend/images/dish/1.jpg'
 
+  page:number
   unsubscribe$ = new Subject()
 
   btnCnf:IButton=
@@ -24,6 +27,7 @@ export class MenusComponent implements OnInit,OnDestroy {
     private _testService:TestService
   ) { 
     this.showButon2=false
+    this.page=1
   }
   ngOnDestroy(): void {
     this.unsubscribe$.next()
@@ -32,11 +36,21 @@ export class MenusComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.listenTestService()
+    this.listenChangePage()
   }
 
   listenTestService(){
     this._testService.change$.pipe(takeUntil(this.unsubscribe$)).subscribe((res)=>{
       console.log('evento del servicio',res)
+    })
+  }
+  listenChangePage(){
+    this._testService.changePage$.pipe(takeUntil(this.unsubscribe$)).subscribe(nextPage=>{
+      if(nextPage){
+        this.page+=1
+      }else if(this.page>1){
+        this.page-=1
+      }
     })
   }
 

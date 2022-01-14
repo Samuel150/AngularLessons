@@ -1,10 +1,21 @@
 .navbar-container{
+    
     display: flex;
     justify-content: space-around;
     align-items: center;
     box-sizing: border-box;
     background-color: var(--white);
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+}
+.sidebar-container{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: var(--white);
+    box-shadow: 5px 0px 20px 0 rgba(0, 0, 0, 0.05);
 }
 
 .page-title{
@@ -16,6 +27,24 @@
     margin-right: 100px;
     height: 80px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:40px;
+    div{
+        color: var(--gray);
+        font-weight: 500px;
+        &:hover{
+            color: var(--primary);
+            cursor: pointer;
+        }
+    }
+}
+
+.sidebar-options{
+
+    margin-right: 100px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap:40px;

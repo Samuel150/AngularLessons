@@ -1,8 +1,8 @@
-<div class="navbar-container">
+<div class="sidebar-container">
     <h2 class="page-title">
         Davur
     </h2>
-    <div class="navbar-options">
+    <div class="sidebar-options">
         <div *ngFor="let option of navbarOptions">
             <svg >
                 <use [attr.xlink:href]="'assets/svg/icons-app.svg#' + option.icon" />
@@ -13,12 +13,7 @@
         </div>
     </div>
     <div class="profile">
-        <!-- Perfil -->
-        <div class="u-flex">
-            <app-button (btnClick)="changePage(false)" [firstIcon]="true" [buttonCnf]="prevButton"></app-button>
-            <app-button (btnClick)="changePage(true)"  [buttonCnf]="nextButton"></app-button>
-        </div>
+        Perfil
+        <app-button (btnClick)="sendEventToMenuPage()"></app-button>
     </div>
 </div>
-
-

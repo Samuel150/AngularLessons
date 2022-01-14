@@ -10,6 +10,7 @@ export class ButtonComponent implements OnInit,OnChanges,OnDestroy,DoCheck {
 
   @Input()  buttonCnf:IButton
   @Output() btnClick = new EventEmitter<string>()
+  @Input() firstIcon:boolean
   title:string='Titulo'
 
 
@@ -19,6 +20,7 @@ export class ButtonComponent implements OnInit,OnChanges,OnDestroy,DoCheck {
       color:'blue',
       text:'Buscar'
     }
+    this.firstIcon=false
   }
 
   ngOnDestroy(): void {

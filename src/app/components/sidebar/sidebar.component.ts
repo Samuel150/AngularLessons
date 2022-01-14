@@ -1,16 +1,13 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { IButton, INavbarOption } from 'src/app/interfaces';
+import { Component, OnInit } from '@angular/core';
+import { INavbarOption } from 'src/app/interfaces';
 import { TestService } from 'src/app/services';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class NavbarComponent implements OnInit {
-
-  nextButton:IButton={text:'Siguiente',color:'orange',icon:'svg-arrow-right'}
-  prevButton:IButton={text:'Anterior',color:'orange',icon:'svg-arrow-left'}
+export class SidebarComponent implements OnInit {
   navbarOptions:INavbarOption[]=[
     {
       text:'POS',
@@ -33,7 +30,6 @@ export class NavbarComponent implements OnInit {
       icon:'svg-dashboard'
     }
   ]
-
   constructor(
     private _testService:TestService
   ) { }
@@ -43,10 +39,6 @@ export class NavbarComponent implements OnInit {
 
   sendEventToMenuPage(){
     //this._testService.sendChange(this.navButton)
-  }
-
-  changePage(next:boolean){
-    this._testService.sendChangePage(next)
   }
 
 }

@@ -9,9 +9,15 @@ export class TestService {
 
   change$ = new Subject<IButton>()
 
+  changePage$ = new Subject<boolean>()
+
   constructor() { }
 
   sendChange(buttonCnf:IButton){
     this.change$.next(buttonCnf)
+  }
+
+  sendChangePage(next:boolean){
+    this.changePage$.next(next)
   }
 }

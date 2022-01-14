@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RestaurantComponent } from './restaurant.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarModule } from 'src/app/components/navbar/navbar.module';
+import { SidebarModule } from 'src/app/components/sidebar/sidebar.module';
 
 const routes:Routes=[
   {
@@ -33,6 +34,7 @@ const routes:Routes=[
   imports: [
     CommonModule,
     NavbarModule,
+    SidebarModule,
     RouterModule.forChild(routes)
   ]
 })
