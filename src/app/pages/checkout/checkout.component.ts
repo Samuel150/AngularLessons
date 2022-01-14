@@ -6,6 +6,14 @@ interface IPaymentMethod {
   description: string;
 }
 
+interface ICheckout{    
+  paymentMethod:string;
+  amount:number
+  cardNumer:number
+  email:string;
+  address:string;
+}
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -18,6 +26,13 @@ export class CheckoutComponent implements OnInit {
     {value:'TARJETA',description:'Trajeta crédito'}
   ];
 
+  initialCheckout:ICheckout={
+    paymentMethod:'EFECTIVO',
+    amount:654688684,
+    cardNumer:2654646,
+    email:'asdasdas',
+    address:'asdasdas',
+  }
   
   formCheckout:FormGroup
   total:number;
@@ -29,7 +44,6 @@ export class CheckoutComponent implements OnInit {
       paymentMethod:['',[Validators.required]],
       amount:['',[Validators.required,Validators.pattern(/^[0-9]*$/),Validators.min(this.total)]],
       cardNumer:['',[Validators.required,Validators.pattern(/^[0-9]*$/)]],
-      cardNumber2:[],
       email:['',[Validators.required,Validators.email]],
       address:['',[Validators.required,Validators.minLength(5),Validators.maxLength(50)]]
     })
@@ -38,6 +52,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.formCheckout.controls.paymentMethod.setValue('EFECTIVO')
     this.handlePaymentForm( this.formCheckout.controls.paymentMethod.value)
+    this.formCheckout.reset(this.initialCheckout)
   }
 
 
