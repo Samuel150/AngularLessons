@@ -1,11 +1,11 @@
 <button (click)="sendOutput()" class="u-flex button-restaurant button-restaurant--{{buttonCnf.color||'blue'}}" >
-    <svg *ngIf="firstIcon">
+    <svg *ngIf="firstIcon && buttonCnf.icon">
         <use [attr.xlink:href]="'assets/svg/icons-app.svg#' + buttonCnf.icon" />
     </svg>
     <div>
         {{buttonCnf.text}}
     </div>
-    <svg *ngIf="!firstIcon">
+    <svg *ngIf="!firstIcon  && buttonCnf.icon">
         <use [attr.xlink:href]="'assets/svg/icons-app.svg#' + buttonCnf.icon" />
     </svg>
 </button>

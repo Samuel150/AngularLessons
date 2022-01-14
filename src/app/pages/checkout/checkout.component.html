@@ -1,8 +1,30 @@
+
 <div class="u-flex u-flex-jus-center u-m-t-10">
     <div>
-        <h2>Total a pagar: {{total}} Bs.</h2>
-        <app-button class="col-12" [buttonCnf]="{text:'Cambiar total a pagar',color:'blue'}" (btnClick)="changeTotalPayment()"  ></app-button>
-        <form [formGroup]="formCheckout" class="row">
+        <div [formGroup]="formCheckout" class="u-flex u-gap-15 u-flex-alg-center">
+            <h2>Precio unitario: {{unitPrice}} Bs.</h2>
+            <mat-form-field  class="col-12" class="example-full-width" appearance="outline">
+                <mat-label>Cantidad</mat-label>
+                <input (ngModelChange)="changeTotalPrice($event)" formControlName="quantity" matInput placeholder="Monto">
+                <mat-error *ngIf="formCheckout.controls.quantity.dirty || formCheckout.controls.quantity.touched">
+                    <mat-error *ngIf="formCheckout.controls.quantity.errors?.required">
+                        El campo es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.quantity.errors?.pattern">
+                        Ingrese solo números
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.quantity.errors?.min">
+                        {{'Mínimo '+ formCheckout.controls.quantity.errors?.min.min +' Bs.'}}
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.quantity.errors?.max">
+                        {{'Máximo '+ formCheckout.controls.quantity.errors?.max.max +' Bs.'}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+            <h2>Total: {{total}} Bs.</h2>
+        </div>
+        <!-- <app-button class="col-12" [buttonCnf]="{text:'Cambiar total a pagar',color:'blue'}" (btnClick)="changeTotalPayment()"  ></app-button> -->
+        <form  [formGroup]="formCheckout" class="row">
             
             
             <mat-form-field class="col-12" appearance="outline">
@@ -39,18 +61,61 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field *ngIf="formCheckout.controls.cardNumer.enabled" class="col-12" class="example-full-width" appearance="outline">
-                <mat-label>Número de tarjeta</mat-label>
-                <input formControlName="cardNumer" matInput placeholder="Número de tarjeta">
-                <mat-error *ngIf="formCheckout.controls.cardNumer.dirty || formCheckout.controls.cardNumer.touched">
-                    <mat-error *ngIf="formCheckout.controls.cardNumer.errors?.required">
+            <mat-form-field *ngIf="formCheckout.controls.cardNumber.enabled" class="col-5 example-full-width" appearance="outline">
+                <mat-label>Digitos iniciales tarjeta</mat-label>
+                <input formControlName="cardNumber" matInput placeholder="Número de tarjeta">
+                <mat-error *ngIf="formCheckout.controls.cardNumber.dirty || formCheckout.controls.cardNumber.touched">
+                    <mat-error *ngIf="formCheckout.controls.cardNumber.errors?.required">
                         El campo es obligatorio
                     </mat-error>
-                    <mat-error *ngIf="formCheckout.controls.cardNumer.errors?.pattern">
+                    <mat-error *ngIf="formCheckout.controls.cardNumber.errors?.pattern">
                         Ingrese solo números
                     </mat-error>
-                    <mat-error *ngIf="formCheckout.controls.cardNumer.errors?.min">
-                        {{'Mínimo '+ formCheckout.controls.cardNumer.errors?.min.min +' Bs.'}}
+                    <mat-error *ngIf="formCheckout.controls.cardNumber.errors?.min">
+                        {{'Mínimo '+ formCheckout.controls.cardNumber.errors?.min.min +' Bs.'}}
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.cardNumber.errors?.minlength">
+                        {{'Ingrese mínimo '+ formCheckout.controls.cardNumber.errors?.minlength.requiredLength+ ' caracteres'}}
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.cardNumber.errors?.maxlength">
+                        {{'Ingrese máximo '+ formCheckout.controls.cardNumber.errors?.maxlength.requiredLength+ ' caracteres'}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="formCheckout.controls.cardNumber2.enabled"  class="example-full-width col-5" appearance="outline">
+                <mat-label>Digitos finales tarjeta</mat-label>
+                <input formControlName="cardNumber2" matInput placeholder="Número de tarjeta">
+                <mat-error *ngIf="formCheckout.controls.cardNumber2.dirty || formCheckout.controls.cardNumber2.touched">
+                    <mat-error *ngIf="formCheckout.controls.cardNumber2.errors?.required">
+                        El campo es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.cardNumber2.errors?.pattern">
+                        Ingrese solo números
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.cardNumber2.errors?.min">
+                        {{'Mínimo '+ formCheckout.controls.cardNumber2.errors?.min.min +' Bs.'}}
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.cardNumber2.errors?.minlength">
+                        {{'Ingrese mínimo '+ formCheckout.controls.cardNumber2.errors?.minlength.requiredLength+ ' caracteres'}}
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.cardNumber2.errors?.maxlength">
+                        {{'Ingrese máximo '+ formCheckout.controls.cardNumber2.errors?.maxlength.requiredLength+ ' caracteres'}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width col-12" appearance="outline">
+                <mat-label>Cambio</mat-label>
+                <input formControlName="change" matInput placeholder="Número de tarjeta">
+                <mat-error *ngIf="formCheckout.controls.change.dirty || formCheckout.controls.change.touched">
+                    <mat-error *ngIf="formCheckout.controls.change.errors?.required">
+                        El campo es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.change.errors?.pattern">
+                        Ingrese solo números
+                    </mat-error>
+                    <mat-error *ngIf="formCheckout.controls.change.errors?.min">
+                        {{'Mínimo '+ formCheckout.controls.change.errors?.min.min +' Bs.'}}
                     </mat-error>
                 </mat-error>
             </mat-form-field>
@@ -85,7 +150,10 @@
                 </mat-error>
             </mat-form-field>
 
-            <app-button class="col-12" [buttonCnf]="{text:'Aceptar',color:'orange'}" (btnClick)="test()"  >     </app-button>
         </form>
     </div>
+</div>
+<div class="u-flex u-flex-jus-center">
+    <app-button [buttonCnf]="{text:'Aceptar',color:'orange'}" (btnClick)="test()"  >     </app-button>
+
 </div>
