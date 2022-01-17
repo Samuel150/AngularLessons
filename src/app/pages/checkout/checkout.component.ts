@@ -115,5 +115,7 @@ export class CheckoutComponent implements OnInit {
     const quantity = +$event
     this.total=this.unitPrice*quantity
     this.formCheckout.controls.amount.setValidators([Validators.required,Validators.pattern(/^[0-9]*$/),Validators.min(this.total)])
+    this.formCheckout.controls.amount.updateValueAndValidity()
+    this.checkInputFieldOutput(this.formCheckout.controls.amount.value)
   }
 }

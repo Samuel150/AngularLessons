@@ -1,1 +1,83 @@
-<p>inventory works!</p>
+
+
+
+<h2>{{indexSelectedProduct==-1?'Añadir producto':'Editar producto'}}</h2>
+<form [formGroup]="formInventory" class="u-flex row">
+    <mat-form-field class="col-3" appearance="outline">
+        <mat-label>Producto</mat-label>
+        <mat-select formControlName="product">
+            <mat-option *ngFor="let product of productsSelect" [value]="product">
+                {{ product }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formInventory.controls.product.dirty || formInventory.controls.product.touched">
+            <mat-error *ngIf="formInventory.controls.product.errors?.required">
+                El campo es obligatorio
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field   class="example-full-width col-3" appearance="outline">
+        <mat-label>Cantidad</mat-label>
+        <input formControlName="quantity" matInput placeholder="Número de tarjeta">
+        <mat-error *ngIf="formInventory.controls.quantity.dirty || formInventory.controls.quantity.touched">
+            <mat-error *ngIf="formInventory.controls.quantity.errors?.required">
+                El campo es obligatorio
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.quantity.errors?.pattern">
+                Ingrese solo números
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.quantity.errors?.min">
+                {{'Mínimo '+ formInventory.controls.quantity.errors?.min.min +' Bs.'}}
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.quantity.errors?.minlength">
+                {{'Ingrese mínimo '+ formInventory.controls.quantity.errors?.minlength.requiredLength+ ' caracteres'}}
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.quantity.errors?.maxlength">
+                {{'Ingrese máximo '+ formInventory.controls.quantity.errors?.maxlength.requiredLength+ ' caracteres'}}
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field  class="example-full-width col-3" appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea formControlName="description" matInput placeholder="Número de tarjeta"></textarea>
+        <mat-error *ngIf="formInventory.controls.description.dirty || formInventory.controls.description.touched">
+            <mat-error *ngIf="formInventory.controls.description.errors?.required">
+                El campo es obligatorio
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.description.errors?.pattern">
+                Ingrese solo números
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.description.errors?.min">
+                {{'Mínimo '+ formInventory.controls.description.errors?.min.min +' Bs.'}}
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.description.errors?.minlength">
+                {{'Ingrese mínimo '+ formInventory.controls.description.errors?.minlength.requiredLength+ ' caracteres'}}
+            </mat-error>
+            <mat-error *ngIf="formInventory.controls.description.errors?.maxlength">
+                {{'Ingrese máximo '+ formInventory.controls.description.errors?.maxlength.requiredLength+ ' caracteres'}}
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+</form>
+<div class="u-flex u-flex-jus-center">
+    <app-button [buttonCnf]="{text:'Aceptar',color:'blue'}" (btnClick)="validateAndSave()"></app-button>
+</div>
+<div class="row">
+    <app-card class="food-list-item col-2" *ngFor="let product of products;let i =index">
+        <div class="u-flex">
+            <app-button (btnClick)="editProduct(i)" [buttonCnf]="{text:'Editar',color:'blue'}"></app-button>
+            <app-button (btnClick)="deleteProduct(i)" [buttonCnf]="{text:'Borrar',color:'orange'}"></app-button>
+        </div>
+        <span>{{product.product}}</span>
+        <img [src]="'https://davur.dexignzone.com/frontend/images/dish/1.jpg'"/>
+        <div class="food-info">
+            <span>
+                <svg >
+                    <use [attr.xlink:href]="'assets/svg/icons-app.svg#svg-billing'" />
+                </svg>
+                {{product.quantity}}
+            </span>
+            <p>{{product.description}}</p>
+        </div>
+    </app-card>
+</div>
