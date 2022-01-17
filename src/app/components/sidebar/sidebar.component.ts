@@ -53,8 +53,8 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getCategoriesAsyncPipe()
-    this.getCategoriesSubcribe()
+    this.getCategoriesAsyncPipe()
+    // this.getCategoriesSubcribe()
   }
 
   sendEventToMenuPage(){
