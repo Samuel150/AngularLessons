@@ -1,4 +1,9 @@
 <div class="navbar-container">
+    <div (click)="sendSidebarAction()" class="sidebar-button u-flex-col u-flex-jus-center u-flex-alg-center">
+        <svg >
+            <use [attr.xlink:href]="'assets/svg/icons-app.svg#svg-menu'" />
+        </svg>
+    </div>
     <h2 class="page-title">
         Davur
     </h2>
@@ -14,10 +19,10 @@
     </div>
     <div class="profile">
         <!-- Perfil -->
-        <div class="u-flex">
+        <!-- <div class="u-flex">
             <app-button (btnClick)="changePage(false)" [firstIcon]="true" [buttonCnf]="prevButton"></app-button>
             <app-button (btnClick)="changePage(true)"  [buttonCnf]="nextButton"></app-button>
-        </div>
+        </div> -->
     </div>
 </div>
 

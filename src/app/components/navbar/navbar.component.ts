@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { IButton, INavbarOption } from 'src/app/interfaces';
 import { TestService } from 'src/app/services';
+import { SidebarService } from 'src/app/services/utils/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -35,7 +36,8 @@ export class NavbarComponent implements OnInit {
   ]
 
   constructor(
-    private _testService:TestService
+    private _testService:TestService,
+    private _sidebarService:SidebarService
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +49,10 @@ export class NavbarComponent implements OnInit {
 
   changePage(next:boolean){
     this._testService.sendChangePage(next)
+  }
+
+  sendSidebarAction(){
+    this._sidebarService.sidebarAction$.next(true)
   }
 
 }

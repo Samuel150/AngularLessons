@@ -1,26 +1,18 @@
 :host{
-    
     overflow: hidden;
 }
 
 .container-restaurant{
+    height: calc(100% - 80px);
+    position: relative;
+}
+
+.pages{
+    // width: calc(100% - var(--width-sidebar));
     width: 100%;
-    height: 50%;
-    box-sizing: border-box;
-    border: 5px solid black;
-    display: flex;
-    justify-content: flex-start;
-    gap:10px;
-    align-items: flex-start;
-    >span{
-        color: red;
-    }
+    overflow-y: auto;
 }
-.flex-item{
-    // margin-left: 10px;
-    width: 30%;
-}
-.flex-item-d{
-    justify-self: flex-end;
-    align-self: flex-end;
+
+.sidebar-test{
+    background-color: red;
 }

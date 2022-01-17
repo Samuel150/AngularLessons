@@ -11,7 +11,7 @@ const routes: Routes = [
     path:'restaurant',
     loadChildren:()=>import('./pages/restaurant/restaurant.module').then(m=>m.RestaurantModule)
   }
-
+  //login
 ];
 
 @NgModule({

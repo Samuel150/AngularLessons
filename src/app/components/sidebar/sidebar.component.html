@@ -1,15 +1,33 @@
+<ng-template #showLoader>
+    <h2>Cargando...</h2>
+</ng-template>
+
 <div class="sidebar-container">
-    <h2 class="page-title">
-        Davur
-    </h2>
-    <div class="sidebar-options">
-        <div *ngFor="let option of navbarOptions">
-            <svg >
-                <use [attr.xlink:href]="'assets/svg/icons-app.svg#' + option.icon" />
-            </svg>
-            <span>
-                {{option.text}}
-            </span>
+        <ng-container *ngIf="categories$ | async as categories;else showLoader">
+            <span *ngIf="categories.length===0">No existen datos</span>
+        
+            <div *ngIf="categories.length>0" class="sidebar-options">
+                <div *ngFor="let category of categories">
+                    <span>
+                        {{ category.name }}
+                    </span>
+                </div>
+            </div>
+    </ng-container>
+</div>
+
+<div class="sidebar-container">
+    <ng-container *ngIf="categoriesLoaded;else showLoader">
+
+        <span *ngIf="categoriesSubscribe.length===0">No existen datos</span>
+        
+        <div *ngIf="categoriesSubscribe.length>0" class="sidebar-options">
+            <div *ngFor="let category of categoriesSubscribe">
+                <span>
+                    {{ category.name }}
+                </span>
+            </div>
         </div>
-    </div>
+    </ng-container>
+    
 </div>

@@ -1,6 +1,7 @@
 //material
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+//bootstrap grid
+@import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
 //abstracts
 @import "./abstracts/colors";
@@ -8,13 +9,14 @@
 //base
 @import "./base/reset";
 @import "./base//material";
+@import "./base/grid";
 //components
 @import "./components/navbar";
 @import "./components/button";
 @import "./components/card";
+@import "./components/sidebar";
 
-//bootstrap grid
-@import 'bootstrap/dist/css/bootstrap-grid.min.css';
+
 
 
 

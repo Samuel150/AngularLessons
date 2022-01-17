@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiRoute:'http://ec2-3-227-245-52.compute-1.amazonaws.com:9090'
 };
 
 /*

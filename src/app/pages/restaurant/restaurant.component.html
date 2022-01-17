@@ -1,23 +1,8 @@
 <app-navbar></app-navbar>
-<div style="height: calc(100% - 80px);" class="u-flex">
+<div class="u-flex">
     <app-sidebar></app-sidebar>
-    <router-outlet></router-outlet>
+    <div class="pages">
+        <router-outlet></router-outlet>
+    </div>
 </div>
-<!-- <div class="container-restaurant">
-    <ng-container *ngFor="let item of itemsRestaurant;let i = index">
-        <ng-container *ngIf="i!==3">
-            <div class="flex-item">
-                {{item}}
-            </div>
-        </ng-container>
-    </ng-container>
-</div> -->
-<!-- <div class="container-restaurant">
-    <div>
-        Este se muestra
-    </div>
-    <div >
-        Este solo se muestra a los admins
-    </div>
-</div> -->
 
