@@ -1,0 +1,61 @@
+<h2>{{data.title}}</h2>
+<form [formGroup]="formDish" class="row">
+  <mat-form-field *ngIf="formDish.controls.name.enabled" class="col-12" class="example-full-width" appearance="outline">
+    <mat-label>Nombre plato</mat-label>
+    <input  formControlName="name" matInput placeholder="Nombre plato">
+    <mat-error *ngIf="formDish.controls.name.dirty || formDish.controls.name.touched">
+        <mat-error *ngIf="formDish.controls.name.errors?.required">
+            El campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.name.errors?.pattern">
+            Ingrese solo números
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.name.errors?.min">
+            {{'Mínimo '+ formDish.controls.name.errors?.min.min +' Bs.'}}
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.name.errors?.max">
+            {{'Máximo '+ formDish.controls.name.errors?.max.max +' Bs.'}}
+        </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field *ngIf="formDish.controls.description.enabled" class="col-12" class="example-full-width" appearance="outline">
+    <mat-label>Descripción</mat-label>
+    <textarea  formControlName="description" matInput placeholder="Descripción"></textarea>
+    <mat-error *ngIf="formDish.controls.description.dirty || formDish.controls.description.touched">
+        <mat-error *ngIf="formDish.controls.description.errors?.required">
+            El campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.description.errors?.pattern">
+            Ingrese solo números
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.description.errors?.min">
+            {{'Mínimo '+ formDish.controls.description.errors?.min.min +' Bs.'}}
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.description.errors?.max">
+            {{'Máximo '+ formDish.controls.description.errors?.max.max +' Bs.'}}
+        </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field *ngIf="formDish.controls.price.enabled" class="col-12" class="example-full-width" appearance="outline">
+    <mat-label>Precio</mat-label>
+    <input  formControlName="price" matInput placeholder="Precio">
+    <mat-error *ngIf="formDish.controls.price.dirty || formDish.controls.price.touched">
+        <mat-error *ngIf="formDish.controls.price.errors?.required">
+            El campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.price.errors?.pattern">
+            Ingrese solo números
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.price.errors?.min">
+            {{'Mínimo '+ formDish.controls.price.errors?.min.min +' Bs.'}}
+        </mat-error>
+        <mat-error *ngIf="formDish.controls.price.errors?.max">
+            {{'Máximo '+ formDish.controls.price.errors?.max.max +' Bs.'}}
+        </mat-error>
+    </mat-error>
+  </mat-form-field>
+</form>
+<app-button
+  [buttonCnf]="{text:'Aceptar',color:'orange'}"
+  (btnClick)="validateForm()"
+></app-button>

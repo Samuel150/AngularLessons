@@ -23,3 +23,27 @@
     padding: 10px;
 }
 
+.loader{
+    width: 100px;
+    height: 100px;
+    svg{
+        width: 100px;
+        height: 100px;
+    }
+    animation: rotation 1s infinite linear;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+.actions{
+    svg{
+        width: 20px;
+        height: 20px;
+        fill: black;
+    }
+}

@@ -1,28 +1,47 @@
-<!-- <app-button
-    [buttonCnf]="btnCnf"
-    (btnClick)="changeAttributes()"
-></app-button>
-<app-button
-    [buttonCnf]="btnCnf"
-    (btnClick)="showButtonClick($event)"
-></app-button>
-<app-button
-    *ngIf="showButon2"
-    [buttonCnf]="btnCnf2"
-></app-button> -->
-<div class="food-list row">
-    <app-card class="food-list-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let item of [].constructor(12)" >
-        <img [src]="page%2==0?'https://davur.dexignzone.com/frontend/images/dish/1.jpg':'https://davur.dexignzone.com/frontend/images/dish/4.jpg'"/>
-        <div class="food-info">
-            <h5>Cheese Burger</h5>
-            <span>
+<ng-template #showLoader>
+    <div class="u-w-100 u-h-100 u-flex u-flex-jus-center">
+        <div class="u-h-100 u-flex-col u-flex-alg-center">
+            <div class="loader">
                 <svg >
                     <use [attr.xlink:href]="'assets/svg/icons-app.svg#svg-billing'" />
                 </svg>
-                6.00
-            </span>
+            </div>
+            <h2>Cargando...</h2>
         </div>
-    </app-card>
+    </div>
+</ng-template>
+<div class="u-flex u-flex-jus-end">
+    <app-button
+        [buttonCnf]="{text:'Añadir',color:'blue'}"
+        (btnClick)="openDialog()"
+    ></app-button>
+</div>
+<div class="food-list row">
+    <ng-container *ngIf="dishes$ | async as dishes;else showLoader">
+        <app-card class="food-list-item col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let dish of dishes" >
+            <img [src]="'https://davur.dexignzone.com/frontend/images/dish/1.jpg'"/>
+            <div class="food-info">
+                <div class="u-flex u-flex-jus-between">
+                    <h3>{{dish.name}}</h3>
+                    <div class="u-flex u-gap-10 actions">
+                        <svg (click)="updateDish(dish)" [matTooltip]="'Editar'">
+                            <use [attr.xlink:href]="'assets/svg/icons-app.svg#svg-pencil'" />
+                        </svg>
+                        <svg (click)="deleteDish(dish)" [matTooltip]="'Eliminar'">
+                            <use [attr.xlink:href]="'assets/svg/icons-app.svg#svg-trash'" />
+                        </svg>
+                    </div>
+                </div>
+                <p>{{dish.description}}</p>
+                <span>
+                    <svg >
+                        <use [attr.xlink:href]="'assets/svg/icons-app.svg#svg-billing'" />
+                    </svg>
+                    {{dish.price}}
+                </span>
+            </div>
+        </app-card>
+    </ng-container>
 </div>
 <div class="u-flex u-flex-jus-center">
     <span>{{page}}</span>
